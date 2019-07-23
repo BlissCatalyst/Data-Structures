@@ -57,13 +57,14 @@ class LinkedList:
     def remove_from_head(self):
         if self.head:
             removed_head = self.head.get_value()
-            if not self.head.get_next():
+            if not self.head.next_node:
                 self.head = None
                 self.tail = None
                 return removed_head
             self.head = self.head.next_node
             return removed_head
         else:
+            print('else')
             return None
 
     # Stuff to find in List
@@ -84,8 +85,9 @@ class Queue:
     def dequeue(self):
         # if self.storage:
         #     return self.storage.pop(0)
-        self.size -= 1
-        self.storage.remove_from_head()
+        if self.size > 0:
+            self.size -= 1
+        return self.storage.remove_from_head()
 
     def len(self):
         # return len(self.storage)
